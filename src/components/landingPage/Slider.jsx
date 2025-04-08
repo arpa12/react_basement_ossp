@@ -27,7 +27,7 @@ const SLIDES = [
 const CustomSlider = () => {
   return (
     <ChakraProvider>
-      <Box w="100%" maxW="1400px" mx="auto" mt={10} position="relative" overflow="hidden">
+      <Box w="100%" maxW="2000px" mx="auto" mt={230} position="relative" overflow="hidden">
         <Swiper
           modules={[Navigation, Autoplay]}
           spaceBetween={0}
@@ -46,7 +46,7 @@ const CustomSlider = () => {
                 bgImage={`url(${slide.imageUrl})`}
                 bgSize="cover"
                 bgPos="center"
-                height={{ base: '300px', md: '500px', lg: '600px' }}
+                height={{ base: '200px', md: '300px', lg: '500px' }}
                 display="flex"
                 alignItems="center"
                 justifyContent="flex-start"
@@ -54,6 +54,7 @@ const CustomSlider = () => {
                 px={{ base: 6, md: 12, lg: 20 }}
                 borderRadius="md"
                 overflow="hidden"
+
               >
                 {/* Text Section */}
                 <Flex alignItems="center" zIndex={2}>
@@ -62,8 +63,8 @@ const CustomSlider = () => {
                     <Text fontSize={{ base: '2xl', md: '3xl', lg: '4xl' }} fontWeight="bold" color="white" mb={4}>
                       {slide.title}
                     </Text>
-                    <Button 
-                      colorScheme="green" 
+                    <Button
+                      colorScheme="green"
                       size="md"
                       onClick={() => window.location.href = slide.buttonLink}
                     >
@@ -71,7 +72,7 @@ const CustomSlider = () => {
                     </Button>
                   </Box>
                 </Flex>
-                
+
                 {/* Overlay Effect */}
                 <Box position="absolute" top="0" left="0" right="0" bottom="0" bgGradient="linear(to-r, blackAlpha.700, transparent)" />
               </Box>
@@ -120,3 +121,14 @@ const CustomSlider = () => {
 };
 
 export default CustomSlider;
+
+
+// Summary of Code:
+// This React component, `CustomSlider`, is a responsive image slider built using the Chakra UI framework and the Swiper library.
+// It features autoplay functionality, smooth transitions, and custom left/right navigation buttons. The slider is designed
+// to display multiple slides, each containing a background image, a title, a button with a link, and a semi-transparent overlay for better readability.
+// The slides are defined as a constant array, making them easily manageable and extendable. The component uses Chakra UI components for styling
+// and layout, and Swiper for rendering and controlling the slides. Custom navigation buttons are styled with Chakra's Box and Icon components,
+// providing a seamless UI experience. This component is intended to be a visually appealing, interactive, and user-friendly image slider
+// suitable for homepages or service highlight sections in web applications.
+
