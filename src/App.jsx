@@ -1,7 +1,10 @@
-import Navbar from './components/landingPage/navbar';
+import Navbar from './components/landingPage/Navbar';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Slider from './components/landingPage/Slider';
 import Services from './components/landingPage/services';
+import Notice from './components/landingPage/Notice';
+import Media from './components/landingPage/Media';
+import Footer from './components/landingPage/Footer';
 
 function App() {
   return (
@@ -10,6 +13,10 @@ function App() {
     <Navbar />
     <Slider />
     <Services />
+      <Notice />
+      <Media />
+      <Footer />
+
     
     {/* <Routes>
       <Route path="/about" element={<About />} />

@@ -25,16 +25,23 @@ const CONTACT_INFO = [
     { icon: EmailIcon, label: 'support@ba-systems.com' },
 ];
 
+const LANGUAGE_OPTIONS = {
+    en: 'EN',
+    bn: 'বাং',
+};
+
 const Navbar = () => {
     const [isEnglish, setIsEnglish] = useState(true);
     const { isOpen, onOpen, onClose } = useDisclosure();
 
+    // Toggle language between English and Bengali
     const toggleLanguage = () => setIsEnglish((prev) => !prev);
 
+    // Render the contact info section in the top bar
     const renderContactInfo = () => (
         <HStack spacing={4}>
             {CONTACT_INFO.map((info, index) => (
-                <HStack key={index}>
+                <HStack key={index} spacing={2}>
                     <info.icon />
                     <Text fontWeight="bold" fontSize="sm">
                         {info.label}
@@ -44,15 +51,16 @@ const Navbar = () => {
         </HStack>
     );
 
+    // Render the language switcher with help text
     const renderLanguageSwitcher = () => (
         <HStack spacing={4}>
             <Text fontWeight="bold" fontSize="sm">
-                {isEnglish ? 'EN' : 'বাং'}
+                {isEnglish ? LANGUAGE_OPTIONS.en : LANGUAGE_OPTIONS.bn}
             </Text>
             <Switch colorScheme="teal" isChecked={isEnglish} onChange={toggleLanguage} />
-            <HStack>
+            <HStack mr="30px">
                 <QuestionOutlineIcon />
-                <Text fontWeight="bold" fontSize="sm">
+                <Text fontWeight="bold" fontSize="sm" >
                     {isEnglish ? 'Need Help?' : 'সহায়তা লাগবে?'}
                 </Text>
             </HStack>
@@ -66,7 +74,7 @@ const Navbar = () => {
                 bg="green.700"
                 color="white"
                 px={{ base: 4, md: 8 }}
-                py={5}
+                py={3}
                 position="fixed"
                 top={0}
                 left={0}
@@ -75,39 +83,43 @@ const Navbar = () => {
                 width="100%"
                 boxShadow="md"
             >
-                <Flex alignItems="center" justifyContent="space-between" mx="auto" maxW="1200px">
+                <Flex alignItems="center" justifyContent="space-between" mx="auto" maxW="1200px" px={{ base: 4, md: 8 }}>
+                    {/* Contact Info */}
                     <HStack spacing={4} display={{ base: 'none', md: 'flex' }}>
                         {renderContactInfo()}
                     </HStack>
 
+                    {/* Navbar Title */}
                     <Text fontWeight="bold" fontSize={{ base: 'sm', md: 'lg' }} textAlign="center" flex={1}>
                         ওয়ান স্টপ সার্ভিস (ওএসএস)
                     </Text>
 
+                    {/* Language and Help Section */}
                     <HStack spacing={4} display={{ base: 'none', md: 'flex' }}>
                         {renderLanguageSwitcher()}
                     </HStack>
                 </Flex>
             </Box>
 
-            {/* Main Navbar - Fixed */}
+            {/* Main Navbar */}
             <Box
                 bg="white"
                 color="black"
                 shadow="md"
                 position="fixed"
-                top="60px" // Adjust to make space for the Top Bar
+                top="40px"
                 left={0}
                 right={0}
                 zIndex={9}
                 width="100%"
             >
-                <Flex alignItems="center" justifyContent="space-between" mx="auto" maxW="1200px">
+                <Flex alignItems="center" justifyContent="space-between" mx="auto" maxW="1200px" py={0} px={{ base: 4, md: 8 }}>
+                    {/* Logo */}
                     <HStack spacing={2}>
                         <RouterLink to="/">
                             <Image
-                                boxSize="150px" // Increased image size
-                                objectFit="contain"
+                                boxSize="100px"
+                                objectFit="cover"
                                 src={require('../../assets/images/logo.png')}
                                 alt="OSSP"
                                 cursor="pointer"
@@ -115,7 +127,8 @@ const Navbar = () => {
                         </RouterLink>
                     </HStack>
 
-                    <HStack spacing={6} display={{ base: 'none', md: 'flex' }}>
+                    {/* Nav Buttons */}
+                    <HStack spacing={4} display={{ base: 'none', md: 'flex' }}>
                         <Button
                             as={RouterLink}
                             to="/about"
@@ -142,6 +155,7 @@ const Navbar = () => {
                         </Button>
                     </HStack>
 
+                    {/* Mobile Menu Icon */}
                     <IconButton
                         icon={<HamburgerIcon />}
                         size="lg"
@@ -159,6 +173,7 @@ const Navbar = () => {
                 <DrawerContent>
                     <DrawerCloseButton />
                     <VStack align="center" spacing={4} mt={10} px={4}>
+                        {/* Mobile Logo */}
                         <Image
                             boxSize="100px"
                             objectFit="contain"
@@ -166,6 +181,7 @@ const Navbar = () => {
                             alt="OSSP"
                         />
 
+                        {/* Mobile Nav Buttons */}
                         <Button as={RouterLink} to="/about" colorScheme="blue" variant="outline" w="full" onClick={onClose}>
                             {isEnglish ? 'About OSSP' : 'ওএসএসপি সম্পর্কে'}
                         </Button>
@@ -182,7 +198,7 @@ const Navbar = () => {
                             </Button>
                         </HStack>
 
-                        {/* Mobile Contact Info */}
+                        {/* Mobile Contact Info and Language Switcher */}
                         <VStack align="start" p={4} bg="green.700" color="white" rounded="md" w="full">
                             {renderContactInfo()}
                             {renderLanguageSwitcher()}
