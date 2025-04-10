@@ -1,7 +1,9 @@
+// components/landingPage/services.jsx
 import React from 'react';
 import { Card, Box, Heading, Flex, Icon, Button, Text, VStack } from '@chakra-ui/react';
 import { FaBuilding, FaFileAlt, FaMoneyBillWave, FaUniversity } from 'react-icons/fa';
 import bgImage from '../../assets/images/bg.jpg';
+import { Link as RouterLink } from 'react-router-dom';
 
 const Services = () => {
     const services = [
@@ -20,7 +22,7 @@ const Services = () => {
             p="30px"
             mt="20px"
         >
-            <Heading textAlign="center"  as='h2' size='xl' color="green.700">Services</Heading>
+            <Heading textAlign="center" as='h2' size='xl' color="green.700">Services</Heading>
             <Flex justify="center" mt={50} px={4} wrap="wrap">
                 <Flex
                     justify="center"
@@ -53,6 +55,8 @@ const Services = () => {
                                     _hover={{ color: 'green.700' }}
                                     boxShadow='md' p='3' rounded='md' bg='white'
                                     color={'green.700'}
+                                    as={RouterLink}
+                                    to={`/service/${service.id}`} // Link to dynamic service page
                                 >
                                     Read More
                                 </Button>

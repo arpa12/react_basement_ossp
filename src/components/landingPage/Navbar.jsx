@@ -60,7 +60,14 @@ const Navbar = () => {
             <Switch colorScheme="teal" isChecked={isEnglish} onChange={toggleLanguage} />
             <HStack mr="30px">
                 <QuestionOutlineIcon />
-                <Text fontWeight="bold" fontSize="sm" >
+                <Text
+                    as={RouterLink}
+                    to="/help" // Route to Help page when clicked
+                    fontWeight="bold"
+                    fontSize="sm"
+                    color="white"
+                    _hover={{ textDecoration: 'underline' }} // Adds hover effect
+                >
                     {isEnglish ? 'Need Help?' : 'সহায়তা লাগবে?'}
                 </Text>
             </HStack>
@@ -131,7 +138,7 @@ const Navbar = () => {
                     <HStack spacing={4} display={{ base: 'none', md: 'flex' }}>
                         <Button
                             as={RouterLink}
-                            to="/about"
+                            to="/about" // About page link
                             colorScheme="blue"
                             variant="outline"
                             leftIcon={<InfoOutlineIcon />}
@@ -140,17 +147,27 @@ const Navbar = () => {
                         </Button>
                         <Button
                             as={RouterLink}
-                            to="/why"
+                            to="/why" // Why page link
                             colorScheme="blue"
                             variant="outline"
                             leftIcon={<QuestionOutlineIcon />}
                         >
                             {isEnglish ? 'Why OSSP' : 'কেন ওএসএসপি'}
                         </Button>
-                        <Button as={RouterLink} to="/login" colorScheme="blue" leftIcon={<LockIcon />}>
+                        <Button
+                            as={RouterLink}
+                            to="/login" // Login page link
+                            colorScheme="blue"
+                            leftIcon={<LockIcon />}
+                        >
                             {isEnglish ? 'Login' : 'লগইন'}
                         </Button>
-                        <Button as={RouterLink} to="/signup" colorScheme="blue" variant="outline">
+                        <Button
+                            as={RouterLink}
+                            to="/signup" // Sign Up page link
+                            colorScheme="blue"
+                            variant="outline"
+                        >
                             {isEnglish ? 'Sign Up' : 'সাইন আপ'}
                         </Button>
                     </HStack>

@@ -1,6 +1,7 @@
 import { Box, Text, Button, Flex, Heading, Icon } from '@chakra-ui/react';
 import { FaRegShareSquare } from "react-icons/fa";
 import React from "react";
+import { Link } from "react-router-dom"; // Import Link from react-router-dom
 
 const Notice = () => {
     return (
@@ -34,8 +35,8 @@ const Notice = () => {
                             colorScheme="teal"
                             size="sm"
                             variant="outline"
-                            as="a"
-                            href="https://www.example.com/notice-details"  // Replace with actual link
+                            as={Link} // Use Link instead of a tag
+                            to="/notice/1"  // Update path to match the dynamic route
                         >
                             See More
                         </Button>
@@ -70,8 +71,8 @@ const Notice = () => {
                                 width="100%"
                                 mb={4}
                                 _hover={{ boxShadow: "lg", cursor: "pointer" }}
-                                as="a"  // Turned each card into a clickable link
-                                href={`https://www.example.com/notice/${index + 1}`} // Replace with actual link for each card
+                                as={Link}  // Turned each card into a clickable link
+                                to={`/notice/${index + 1}`} // Fixed path to `/notice/1`, `/notice/2`, etc.
                             >
                                 <Text fontSize="xl" fontWeight="semibold" color="gray.700">
                                     Create Notice English
